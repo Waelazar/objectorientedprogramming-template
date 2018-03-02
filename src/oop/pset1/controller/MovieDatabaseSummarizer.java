@@ -42,6 +42,7 @@ public class MovieDatabaseSummarizer {
                 .filter(Objects::nonNull)
                 .limit(2)
                 .map(e -> e.getKey() + " (" + e.getValue() + ")")
+                .peek(e -> System.out.println(e.toString()))
                 .collect(Collectors.toList());
 
         Summary summary = new Summary();
