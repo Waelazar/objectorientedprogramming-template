@@ -3,6 +3,7 @@ package oop.pset1.parser;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
@@ -17,12 +18,13 @@ public abstract class AbstractMovieParser {
             lines = Files.lines(Paths.get(filePath));
         } catch (IOException e) {
             e.printStackTrace();
+            return new ArrayList<>();
         }
 
+        assert lines != null;
         return lines.skip(1)
                 .map(line -> line.split(";"))
                 .filter(line -> line.length == 24)
-                .filter(Objects::nonNull)
                 .map(toObject())
                 .collect(Collectors.toList());
     }

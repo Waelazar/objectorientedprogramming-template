@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,7 +34,6 @@ public class ReadFilePath extends AbstractMovieParser {
         String[] word = genersColumn.split(", ");
 
         return Stream.of(word)
-                .filter(line -> line != null)
                 .map(line -> line.split(": "))
                 .filter(e -> e.length == 2)
                 .filter(e -> e[0].equals("name"))
