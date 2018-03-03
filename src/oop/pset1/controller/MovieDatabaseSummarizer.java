@@ -38,7 +38,15 @@ public class MovieDatabaseSummarizer {
                 .filter(Objects::nonNull)
                 .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
 
+
+        Map<Object, Long> malefemaleRatio = actorsList.stream()
+                .map(Actors::getGender)
+                .flatMap(Collection::stream)
+                .filter(Objects::nonNull)
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+
         Summary actorsSummary = new Summary();
+        actorsSummary.setMalefemaleRatio(malefemaleRatio);
         actorsSummary.setMostHiredActors(topApperaingActors);
 
         return actorsSummary;

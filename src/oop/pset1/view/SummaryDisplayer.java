@@ -12,9 +12,14 @@ import java.util.stream.Collectors;
 
 public class SummaryDisplayer {
     public void DisplaySummary(Summary summary) throws IOException{
+
+        System.out.println("top rated Films :");
+        System.out.println(" ------------ ");
+
         List<String> mostRatedFilms = summary.getMostRatedFilms();
         mostRatedFilms.forEach(System.out::println);
 
+        System.out.println();
         System.out.println("top Apperaing Movies:");
         System.out.println(" ------------ ");
 
@@ -30,6 +35,7 @@ public class SummaryDisplayer {
     }
 
     public void DisplaySummaryActors(Summary actorsSummary){
+        System.out.println();
         System.out.println("top Appearing Actors:");
         System.out.println(" ------------ ");
 
@@ -39,6 +45,18 @@ public class SummaryDisplayer {
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .limit(2)
                 .map(e -> e.getKey() + " (" + e.getValue() + ")")
-                .forEach(e -> System.out.println(e.toString()));
+                .forEach(System.out::println);
+        System.out.println();
+        System.out.println("top Appearing male and Female:");
+        System.out.println(" ------------ ");
+
+        actorsSummary.getMalefemaleRatio()
+                .entrySet()
+                .stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .map(e -> e.getKey()+ " === " + e.getValue())
+                .forEach(System.out::println);
+
+
     }
 }

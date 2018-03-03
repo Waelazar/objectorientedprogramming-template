@@ -45,19 +45,19 @@ public class ActorsParser {
     private List<String> toParseCrew(String crew) {
 
         String object = crew.replaceAll("\\[", "").replaceAll("]", "")
-                .replaceAll("\\{", "").replaceAll("}", "")
+                .replaceAll("\\{", "").replaceAll("}", "").replaceAll("\"", "")
                 .replaceAll("'", "");
 
-        String[] genderSplit = object.split(",");
+        String[] genderSplit = object.split(", ");
 
-        return Stream.of(genderSplit)
+        List<String> gender = Stream.of(genderSplit)
                 .map(line -> line.split(": "))
                 .filter(line -> line.length == 2)
                 .filter(Objects::nonNull)
                 .filter(e -> e[0].equals("gender"))
-                .map(e -> e[1])
-                .peek(e -> System.out.println(e))
+                .map(e -> String.valueOf(e[1]))
                 .collect(Collectors.toList());
+        return gender;
     }
 
     private List<String> toParseCast(String name) {

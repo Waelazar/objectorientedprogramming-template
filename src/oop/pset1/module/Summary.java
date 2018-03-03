@@ -7,6 +7,7 @@ public class Summary {
     private List<String> mostRatedFilms;
     private Map<Object, Long> mostAppearingMovie;
     private Map<Object, Long> mostHiredActors;
+    private Map<Object, Long> malefemaleRatio;
 
     public Map<Object, Long> getMostAppearingMovie() {
         return mostAppearingMovie;
@@ -30,5 +31,13 @@ public class Summary {
 
     public void setMostHiredActors(Map<Object, Long> mostHiredActors) {
         this.mostHiredActors = mostHiredActors;
+    }
+
+    public Map<Object, Long> getMalefemaleRatio() {
+        return malefemaleRatio;
+    }
+
+    public void setMalefemaleRatio(Map<Object, Long> malefemaleRatio) {
+        this.malefemaleRatio = malefemaleRatio;
     }
 }
