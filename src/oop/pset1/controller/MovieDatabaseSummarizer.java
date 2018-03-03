@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class MovieDatabaseSummarizer {
     public Summary summarize(List<Movie> movieList) {
+
         List<String> topRatedFilms = movieList.stream()
                 .sorted((e1 , e2) -> e2.getVote_avarrage().compareTo(e1.getVote_avarrage()))
                 .limit(5)
@@ -31,24 +32,16 @@ public class MovieDatabaseSummarizer {
     }
 
     public Summary actorsSummarize(List<Actors> actorsList){
-        Map<Object, Long> appearances = actorsList.stream()
+        Map<Object, Long> topApperaingActors = actorsList.stream()
                 .map(Actors::getName)
                 .flatMap(Collection::stream)
                 .filter(Objects::nonNull)
                 .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
 
-        List<String> topApperaingActors = appearances.entrySet().stream()
-                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .filter(Objects::nonNull)
-                .limit(2)
-                .map(e -> e.getKey() + " (" + e.getValue() + ")")
-                .peek(e -> System.out.println(e.toString()))
-                .collect(Collectors.toList());
+        Summary actorsSummary = new Summary();
+        actorsSummary.setMostHiredActors(topApperaingActors);
 
-        Summary summary = new Summary();
-        summary.setMostHiredActors(topApperaingActors);
-
-        return summary;
+        return actorsSummary;
     }
 }
 

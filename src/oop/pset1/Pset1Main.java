@@ -18,13 +18,13 @@ public class Pset1Main {
 
         ReadFilePath parser = new ReadFilePath();
         String MovieFilePath = "src/oop/pset1/data/movies.csv";
-        List<Movie> Movies = parser.asList(MovieFilePath).stream()
+        List<Movie> movies = parser.asList(MovieFilePath).stream()
                 .map(e -> (Movie) e)
                 .collect(Collectors.toList());
 
         // get summarized answers from the List of Movies
         MovieDatabaseSummarizer summarizer = new MovieDatabaseSummarizer();
-        Summary summary = summarizer.summarize(Movies);
+        Summary summary = summarizer.summarize(movies);
         // display the summary
         SummaryDisplayer MovieDisplayer = new SummaryDisplayer();
         try {
@@ -43,11 +43,7 @@ public class Pset1Main {
         Summary actorsSummarizer1 = actorsSummarizer.actorsSummarize(actors);
 
         SummaryDisplayer ActorDisplayer = new SummaryDisplayer();
-        try {
-            ActorDisplayer.DisplaySummary(actorsSummarizer1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ActorDisplayer.DisplaySummaryActors(actorsSummarizer1);
 
     }
 }

@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class SummaryDisplayer {
     public void DisplaySummary(Summary summary) throws IOException{
@@ -24,10 +26,19 @@ public class SummaryDisplayer {
                         .map(e -> e.getKey() + " (" + e.getValue() + ")")
                         .forEach(System.out::println);
 
+
+    }
+
+    public void DisplaySummaryActors(Summary actorsSummary){
         System.out.println("top Appearing Actors:");
         System.out.println(" ------------ ");
 
-        List<String> topHiredActors = summary.getMostHiredActors();
-        System.out.println(topHiredActors);
+        actorsSummary.getMostHiredActors()
+                .entrySet()
+                .stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .limit(2)
+                .map(e -> e.getKey() + " (" + e.getValue() + ")")
+                .forEach(e -> System.out.println(e.toString()));
     }
 }

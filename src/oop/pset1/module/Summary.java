@@ -6,7 +6,7 @@ import java.util.Map;
 public class Summary {
     private List<String> mostRatedFilms;
     private Map<Object, Long> mostAppearingMovie;
-    private List<String> mostHiredActors;
+    private Map<Object, Long> mostHiredActors;
 
     public Map<Object, Long> getMostAppearingMovie() {
         return mostAppearingMovie;
@@ -24,11 +24,11 @@ public class Summary {
         this.mostRatedFilms = mostRatedFilms;
     }
 
-    public List<String> getMostHiredActors() {
+    public Map<Object, Long> getMostHiredActors() {
         return mostHiredActors;
     }
 
-    public void setMostHiredActors(List<String> mostHiredActors) {
+    public void setMostHiredActors(Map<Object, Long> mostHiredActors) {
         this.mostHiredActors = mostHiredActors;
     }
 }
