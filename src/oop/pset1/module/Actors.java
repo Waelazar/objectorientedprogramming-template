@@ -5,6 +5,7 @@ import java.util.List;
 public class Actors {
 
     private List<String> name;
+    private List<String> gender;
 
     public Actors() {
         this.name = name;
@@ -16,5 +17,13 @@ public class Actors {
 
     public void setName(List<String> name) {
         this.name = name;
+    }
+
+    public List<String> getGender() {
+        return gender;
+    }
+
+    public void setGender(List<String> gender) {
+        this.gender = gender;
     }
 }

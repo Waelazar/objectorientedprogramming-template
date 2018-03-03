@@ -36,12 +36,31 @@ public class ActorsParser {
     private Function<String[], Object> toActors() {
         return column -> {
             Actors actors = new Actors();
-            actors.setName(toParse(column[0]));
+            actors.setName(toParseCast(column[0]));
+            actors.setGender(toParseCrew(column[1]));
             return actors;
         };
     }
 
-    private List<String> toParse(String name) {
+    private List<String> toParseCrew(String crew) {
+
+        String object = crew.replaceAll("\\[", "").replaceAll("]", "")
+                .replaceAll("\\{", "").replaceAll("}", "")
+                .replaceAll("'", "");
+
+        String[] genderSplit = object.split(",");
+
+        return Stream.of(genderSplit)
+                .map(line -> line.split(": "))
+                .filter(line -> line.length == 2)
+                .filter(Objects::nonNull)
+                .filter(e -> e[0].equals("gender"))
+                .map(e -> e[1])
+                .peek(e -> System.out.println(e))
+                .collect(Collectors.toList());
+    }
+
+    private List<String> toParseCast(String name) {
         String object = name.replaceAll("\\[", "").replaceAll("]", "")
                 .replaceAll("\\{", "").replaceAll("}", "")
                 .replaceAll("'", "");
