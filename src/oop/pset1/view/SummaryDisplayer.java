@@ -57,7 +57,7 @@ public class SummaryDisplayer {
                 .stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .map(e -> (
-                    (e.getKey().equals("2")) ? "MALE" : "FEMALE")
+                    (e.getKey().equals("1")) ? "MALE" : "FEMALE")
                     + " === " +
                     ((double)e.getValue() / totalNumber) * 100 + "%")
                 .forEach(System.out::println);
