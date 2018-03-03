@@ -4,11 +4,9 @@ import com.sun.javafx.collections.MappingChange;
 import oop.pset1.module.Summary;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SummaryDisplayer {
     public void DisplaySummary(Summary summary) throws IOException{
@@ -50,13 +48,17 @@ public class SummaryDisplayer {
         System.out.println("top Appearing male and Female:");
         System.out.println(" ------------ ");
 
+        Long totalNumber = actorsSummary.getMalefemaleRatio()
+                .entrySet().stream().map(e -> e.getValue()).collect(Collectors.summingLong(e -> Long.parseLong(String.valueOf(e))));
+
+        System.out.println(totalNumber);
         actorsSummary.getMalefemaleRatio()
                 .entrySet()
                 .stream()
-                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .map(e -> e.getKey()+ " === " + e.getValue())
+                .sorted((e1 , e2) -> e2.getValue().compareTo(e1.getValue()))
+                .map(e -> e.getKey() + " === " + (totalNumber * e.getValue()) + "%")
                 .forEach(System.out::println);
-
+//        System.out.println(Math.toIntExact(actorsSummary.getMalefemaleRatio().entrySet().stream().count()));
 
     }
 }

@@ -50,14 +50,13 @@ public class ActorsParser {
 
         String[] genderSplit = object.split(", ");
 
-        List<String> gender = Stream.of(genderSplit)
+        return Stream.of(genderSplit)
                 .map(line -> line.split(": "))
                 .filter(line -> line.length == 2)
-                .filter(Objects::nonNull)
                 .filter(e -> e[0].equals("gender"))
-                .map(e -> String.valueOf(e[1]))
+                .filter(e -> e[1].equals("1") || e[1].equals("2"))
+                .map(e -> e[1])
                 .collect(Collectors.toList());
-        return gender;
     }
 
     private List<String> toParseCast(String name) {
