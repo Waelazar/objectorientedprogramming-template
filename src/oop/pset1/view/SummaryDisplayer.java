@@ -49,16 +49,17 @@ public class SummaryDisplayer {
         System.out.println(" ------------ ");
 
         Long totalNumber = actorsSummary.getMalefemaleRatio()
-                .entrySet().stream().map(e -> e.getValue()).collect(Collectors.summingLong(e -> Long.parseLong(String.valueOf(e))));
+                .entrySet().stream().map(Map.Entry::getValue).mapToLong(e -> Long.parseLong(String.valueOf(e))).sum();
 
         System.out.println(totalNumber);
         actorsSummary.getMalefemaleRatio()
                 .entrySet()
                 .stream()
-                .sorted((e1 , e2) -> e2.getValue().compareTo(e1.getValue()))
-                .map(e -> e.getKey() + " === " + (totalNumber * e.getValue()) + "%")
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .map(e -> (
+                    (e.getKey().equals("2")) ? "MALE" : "FEMALE")
+                    + " === " +
+                    ((double)e.getValue() / totalNumber) * 100 + "%")
                 .forEach(System.out::println);
-//        System.out.println(Math.toIntExact(actorsSummary.getMalefemaleRatio().entrySet().stream().count()));
-
     }
 }

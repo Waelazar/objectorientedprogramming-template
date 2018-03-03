@@ -54,7 +54,7 @@ public class ActorsParser {
                 .map(line -> line.split(": "))
                 .filter(line -> line.length == 2)
                 .filter(e -> e[0].equals("gender"))
-                .filter(e -> e[1].equals("1") || e[1].equals("2"))
+                .filter(e -> e[1].equals("2") || e[1].equals("1"))
                 .map(e -> e[1])
                 .collect(Collectors.toList());
     }
