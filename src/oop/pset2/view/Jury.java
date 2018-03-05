@@ -2,8 +2,6 @@ package oop.pset2.view;
 
 import oop.pset2.module.Moves;
 
-import java.util.Scanner;
-
 public class Jury {
     public void sayResult(Moves move1, Moves move2) {
         System.out.println("The First Player picked: " + move1.getMove());
