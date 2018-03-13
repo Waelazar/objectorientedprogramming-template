@@ -28,6 +28,5 @@ public class Jury {
         else {
             System.out.println("no one won");
         }
-
     }
 }
