@@ -1,0 +1,17 @@
+Host - Welcome to the Rock, Scissors, Paper tournament!
+
+Write your move (rock, scissors, paper): paper
+The result of this round is.... !
+Player 1 move: paper
+Player 2 move: paper
+Nobody wins.
+Do you want to play again? (y/n): y
+
+Write your move (rock, scissors, paper): rock
+The result of this round is.... !
+Player 1 move: rock
+Player 2 move: scissors
+Player 1 wins.
+Do you want to play again? (y/n): n
+
+Host - Goodbye!
