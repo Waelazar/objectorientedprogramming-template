@@ -37,7 +37,7 @@ Answer the following questions:
 * Who arrived to the airport too late?
 * Generate the following output:
 
-```test output```
+```check solution.txt for the output```
 
 ## Extra Questions:
 
