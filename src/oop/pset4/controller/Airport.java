@@ -4,8 +4,11 @@ import oop.pset4.controller.travelstage.*;
 import oop.pset4.model.Luggage;
 import oop.pset4.view.SummaryReporter;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Airport {
 
@@ -23,9 +26,8 @@ public class Airport {
         // TODO apply airport travel stages per the following order
 
         // show a welcome message
-
         // allow passengers to travel only if they show up at least 30 mins before departure time
-        // drop the luggage at the drop off stand
+        // drop the luggage at the drop off stan
         // bring the luggage to the storage area
         // carry the luggage to the plane with the transport cart
         // flight to the destination

@@ -11,7 +11,6 @@ public class Flight implements TravelStage {
     public Luggage process(Luggage luggage) {
         // TODO add travel duration to the processing time
         // Update arrival time
-
         return null;
     }
 }
