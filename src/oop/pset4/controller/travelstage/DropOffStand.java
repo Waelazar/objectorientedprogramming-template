@@ -9,7 +9,6 @@ public class DropOffStand implements TravelStage {
     @Override
     public Luggage process(Luggage luggage) {
         // TODO add 10 minutes to the processing time
-        // duration
         Duration duration = luggage.getWaitingDuration().plusMinutes(10);
         luggage.setWaitingDuration(duration);
         return luggage;
