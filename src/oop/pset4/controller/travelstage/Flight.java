@@ -12,8 +12,8 @@ public class Flight implements TravelStage {
         // TODO add travel duration to the processing time
         Duration flightDuration = luggage.getFlightDuration();
         Duration waitingDuration = luggage.getWaitingDuration();
-        Duration updateDurationTime = waitingDuration.plus(flightDuration);
-        luggage.setWaitingDuration(updateDurationTime);
+        Duration updateWaitingTime = waitingDuration.plus(flightDuration);
+        luggage.setWaitingDuration(updateWaitingTime);
 
         LocalDateTime departureTime = luggage.getDepartureTime();
         LocalDateTime updateArrivalTime = departureTime.plus(luggage.getFlightDuration());
