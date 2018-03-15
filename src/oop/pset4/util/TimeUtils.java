@@ -47,12 +47,12 @@ public class TimeUtils {
     public static String formatLocalTime(LocalDateTime time, String destination) {
         ZoneId originZone = ZoneId.of("Europe/Vienna");
         // obtain the destination zone in a dynamic way
-
+        ZoneId destinationZone = ZoneId.of("Europe/" + destination);
         ZonedDateTime originTime = time.atZone(originZone);
         // obtain the destination time with the destination zone
-
+        ZonedDateTime zonedDateTimeAtDestination = originTime.withZoneSameInstant(destinationZone);
         // use the method formatTime to return the formatted destination time
-        return null;
+        return formatTime(zonedDateTimeAtDestination);
     }
 
 }

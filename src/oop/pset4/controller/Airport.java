@@ -43,8 +43,9 @@ public class Airport {
         // flight to the destination
         departureLuggage.forEach(e -> flight.process(e));
         // carry the luggage to the luggage claim with the transport cart
-        departureLuggage.forEach(e -> luggageClaim.process(e));
+        departureLuggage.forEach(e -> transportCart.process(e));
         // pick up the luggage from the luggage claim
+        departureLuggage.forEach(e -> luggageClaim.process(e));
 
         // display luggage report summary for rejected luggage
         summaryReporter.reportRejected(rejectedLuggege);
