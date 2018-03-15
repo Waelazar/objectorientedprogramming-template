@@ -34,6 +34,7 @@ public class Airport {
         List<Luggage> acceptedLuggege = departureLuggage.stream()
                 .filter(e -> securityControl.isAllowedToTravel(e) == true)
                 .collect(Collectors.toList());
+
         // drop the luggage at the drop off stan
         departureLuggage.forEach(e -> dropOff.process(e));
         // bring the luggage to the storage area
