@@ -10,7 +10,14 @@ public class Flight implements TravelStage {
     @Override
     public Luggage process(Luggage luggage) {
         // TODO add travel duration to the processing time
-        // Update arrival time
-        return null;
+        Duration flightDuration = luggage.getFlightDuration();
+        Duration waitingDuration = luggage.getWaitingDuration();
+        Duration updateDurationTime = waitingDuration.plus(flightDuration);
+        luggage.setWaitingDuration(updateDurationTime);
+
+        LocalDateTime departureTime = luggage.getDepartureTime();
+        LocalDateTime updateArrivalTime = departureTime.plus(luggage.getFlightDuration());
+        luggage.setArrivalTime(updateArrivalTime);
+        return luggage;
     }
 }
