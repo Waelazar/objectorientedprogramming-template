@@ -9,7 +9,8 @@ public class TransportCart implements TravelStage {
     @Override
     public Luggage process(Luggage luggage) {
         // TODO add 25 minutes to the processing time
-
+        Duration waitingDuration = luggage.getWaitingDuration();
+        luggage.
         return null;
     }
 }

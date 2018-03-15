@@ -12,7 +12,9 @@ public class StorageArea implements TravelStage {
         // TODO add as much duration to the processing time as the departure time minus 30 minutes
         // if 30 minutes is not possible, the luggage won't be stored at all, which means that
         // no waiting time will be added at all
-
-        return null;
+        LocalDateTime dropOffTime = luggage.getDropOffTime();
+        LocalDateTime departureTime = luggage.getDepartureTime();
+        Duration duration = Duration.between(dropOffTime, departureTime).abs().minusMinutes(30);
+        return luggage;
     }
 }
