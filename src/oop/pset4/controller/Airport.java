@@ -35,7 +35,7 @@ public class Airport {
                 .filter(e -> securityControl.isAllowedToTravel(e) == true)
                 .collect(Collectors.toList());
 
-        // drop the luggage at the drop off stan
+        // drop the luggage at the drop off stand
         departureLuggage.forEach(e -> dropOff.process(e));
         // bring the luggage to the storage area
         departureLuggage.forEach(e -> storageArea.process(e));
