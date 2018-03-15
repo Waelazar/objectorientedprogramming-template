@@ -9,7 +9,7 @@ public class LuggageClaim implements TravelStage {
     @Override
     public Luggage process(Luggage luggage) {
         // TODO add 15 minutes to the processing time
-        Duration duration = luggage.getWaitingDuration().plusMinutes(10);
+        Duration duration = luggage.getWaitingDuration().plusMinutes(15);
         luggage.setWaitingDuration(duration);
         return luggage;
     }

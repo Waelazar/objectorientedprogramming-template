@@ -15,6 +15,7 @@ public class StorageArea implements TravelStage {
         LocalDateTime dropOffTime = luggage.getDropOffTime();
         LocalDateTime departureTime = luggage.getDepartureTime();
         Duration duration = Duration.between(dropOffTime, departureTime).abs().minusMinutes(30);
+        luggage.setWaitingDuration(duration);
         return luggage;
     }
 }
